@@ -44,6 +44,18 @@ def readXlsx(path):
         # cell_data_4 = booksheet.cell(row=i, column=18).value                   #获取第i行 4 列的数据
         # print (cell_data_1, cell_data_2, cell_data_3, cell_data_4)
     return retdata
+
+
+
+def isset(v):
+    try:
+        type (eval(v))
+    except:
+        return 0
+    else:
+        return 1
+
+        
 if __name__ == '__main__':
     arr = [[0,0,0],[1,1,1],[2,2,2],[3,3,3],[4,4,4]]
     arr = np.array(arr)
