@@ -112,13 +112,13 @@ class Model():
         
 
         left = np.array(raw_left)
-        left = left[1:,10:16]
+        left = left[1:,10:19]
         myPrint("leftshape",left.shape[0])
         right = np.array(raw_right)
-        right = right[1:,10:16]
+        right = right[1:,10:19]
         myPrint("right",right.shape[0])
         straight = np.array(raw_straight)
-        straight = straight[1:,10:16]
+        straight = straight[1:,10:19]
         myPrint("straight",straight.shape[0])
         totalnum = straight.shape[0]+right.shape[0]+left.shape[0]
         myPrint("totol num ofdata",totalnum)
@@ -206,7 +206,7 @@ class Model():
                 print(i.name,i.shape)
 
         _ = input("press enter to continue...")
-        self.model.fit(self.xtrain,self.ytrain,epochs = 50)
+        self.model.fit(self.xtrain,self.ytrain,epochs = 150)
         # self.model.fit(self.xtrain,self.ytrain,epochs = 500,callbacks=callbacks_list)
         
     def eval(self,debug):
@@ -232,21 +232,21 @@ class Model():
 
 if __name__ == "__main__":
     model = Model()
-    model.loadintergratedData("/data/zhoutianyi/NavigationSystem/data/Integral_30sets/LeftTurn30.xlsx","/data/zhoutianyi/NavigationSystem/data/Integral_30sets/RightTurn30.xlsx","/data/zhoutianyi/NavigationSystem/data/Integral_30sets/Straight30Backward.xlsx",25,0.2)
+    # model.loadintergratedData("./data/Integral_30sets/LeftTurn30.xlsx","./data/Integral_30sets/RightTurn30.xlsx","./data/Integral_30sets/Straight30Backward.xlsx",25,0.2)
 
-    model.loadintergratedData("/data/zhoutianyi/NavigationSystem/data/Integral_30sets/LeftTurn30Nonuniform.xlsx","/data/zhoutianyi/NavigationSystem/data/Integral_30sets/RightTurn30Nonuniform.xlsx","/data/zhoutianyi/NavigationSystem/data/Integral_30sets/Straight30Forward.xlsx",25,0.2)
+    # model.loadintergratedData("./data/Integral_30sets/LeftTurn30Nonuniform.xlsx","./data/Integral_30sets/RightTurn30Nonuniform.xlsx","./data/Integral_30sets/Straight30Forward.xlsx",25,0.2)
     
-    model.loadintergratedData("/data/zhoutianyi/NavigationSystem/data/Integral_25sets/LeftTurn2_25.xlsx","/data/zhoutianyi/NavigationSystem/data/Integral_25sets/RightTurn2_25.xlsx","/data/zhoutianyi/NavigationSystem/data/Integral_25sets/Straight_25.xlsx",25,0.2)
+    # model.loadintergratedData("./data/Integral_25sets/LeftTurn2_25.xlsx","./data/Integral_25sets/RightTurn2_25.xlsx","./data/Integral_25sets/Straight_25.xlsx",25,0.2)
 
 
-    model.loadintergratedData("/data/zhoutianyi/NavigationSystem/data/bigData/left_696steps.xlsx","/data/zhoutianyi/NavigationSystem/data/bigData/right_693steps.xlsx","/data/zhoutianyi/NavigationSystem/data/bigData/straight_976steps.xlsx",25,0.2)
+    model.loadintergratedData("./data/bigData/left_696steps.xlsx","./data/bigData/right_693steps.xlsx","./data/bigData/straight_976steps.xlsx",25,0.2)
     if (True):
         model.train()
         model.eval(False)
         model.save()
     
     else:
-        model.load("/data/zhoutianyi/NavigationSystem/model/model20210324.h5")
+        model.load("./model/model20210324.h5")
         model.eval(False)
     
     # 
